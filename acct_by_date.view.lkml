@@ -3,8 +3,9 @@
 view: acct_by_date {
   # Or, you could make this view a derived table, like this:
   derived_table: {
+    datagroup_trigger: uli_datagroup
     # sql_trigger_value: select count(*) ct from `hale-sequence-317521.ds1.uli` ;;
-    persist_for: "10 minutes"
+    # persist_for: "10 minutes"
     # SELECT EXTRACT(HOUR FROM CURRENT_TIMESTAMP())
     partition_keys: [ "pt" ]
     sql: SELECT
