@@ -1,24 +1,23 @@
 
 
 view: acct_by_date {
-  # Or, you could make this view a derived table, like this:
+
   derived_table: {
     datagroup_trigger: uli_datagroup
-    # sql_trigger_value: select count(*) ct from `hale-sequence-317521.ds1.uli` ;;
-    # persist_for: "10 minutes"
-    # SELECT EXTRACT(HOUR FROM CURRENT_TIMESTAMP())
     partition_keys: [ "pt" ]
+    increment_key: "pt"
     sql: SELECT
           _partitiontime pt
         , usage_date as usage_date
         , account_id
         , COUNT(*) as ct
         , sum(amount) amount
+        , current_timestamp() current_time
       FROM  `hale-sequence-317521.ds1.uli`
       GROUP BY pt, usage_date, account_id
       ;;
   }
-
+  # this is a comment
   dimension: pt {
     label: "pt"
     description: "pt"
@@ -50,8 +49,15 @@ view: acct_by_date {
 
   dimension: amount {
     label: "amount"
-    description: "revenue"
+    description: "amount"
+    type: number
     sql: ${TABLE}.amount ;;
+  }
+  dimension: current_time {
+    label: "current_time"
+    type: date_time
+    description: "current_time"
+    sql: ${TABLE}.current_time ;;
   }
 
 }
