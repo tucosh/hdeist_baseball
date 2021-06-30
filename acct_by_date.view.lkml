@@ -12,7 +12,7 @@ view: acct_by_date {
         , account_id
         , COUNT(*) as ct
         , sum(amount) amount
-        , current_timestamp() current_time
+        , any_value(current_timestamp()) refresh_time
       FROM  `hale-sequence-317521.ds1.uli`
       GROUP BY pt, usage_date, account_id
       ;;
@@ -53,11 +53,11 @@ view: acct_by_date {
     type: number
     sql: ${TABLE}.amount ;;
   }
-  dimension: current_time {
-    label: "current_time"
+  dimension: refresh_time {
+    label: "refresh_time"
     type: date_time
-    description: "current_time"
-    sql: ${TABLE}.current_time ;;
+    description: "refresh_time"
+    sql: ${TABLE}.refresh_time ;;
   }
 
 }
