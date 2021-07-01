@@ -16,7 +16,10 @@ view: uli_bis {
       column: account_id {
         field: uli.account_id
       }
-    }
+      column: ts {
+        field: uli.ts
+      }
+      }
   }
   # this is a comment
   dimension: pt {
@@ -39,5 +42,16 @@ view: uli_bis {
     sql: ${TABLE}.account_id ;;
   }
 
+  dimension: uli_ts {
+    label: "uli_ts"
+    description: "uli_ts"
+    type: date_time
+    sql: ${TABLE}.ts ;;
+  }
 
+  dimension: ts {
+    label: "ts"
+    type: date_time
+    sql: current_timestamp();;
+  }
 }

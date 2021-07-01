@@ -12,6 +12,9 @@ explore: uli {
 #  cancel_grouping_fields: [uli.amount]
 }
 
+explore: uli_bis {
+  group_label: "hdeist fdm"
+}
 # explore: acct_by_date {
 #   group_label: "hdeist fdm"
 #   cancel_grouping_fields: [acct_by_date.amount]

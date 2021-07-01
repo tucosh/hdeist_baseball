@@ -1,8 +1,8 @@
 view: uli {
   sql_table_name: `hale-sequence-317521.ds1.uli` ;;
   #
-  dimension: partitiontime {
-    label: "partitiontime"
+  dimension: pt {
+    label: "pt"
     sql: ${TABLE}._partitiontime ;;
     type: date_time
   }
@@ -27,11 +27,11 @@ view: uli {
   #   type: string
   #   sql: ${TABLE}.service_display_name ;;
   # }
-  # dimension: account_id {
-  #   label: "account_id"
-  #   type: string
-  #   sql: ${TABLE}.account_id ;;
-  # }
+  dimension: account_id {
+    label: "account_id"
+    type: string
+    sql: ${TABLE}.account_id ;;
+  }
 
   # dimension: usage_date {
   #   label: "usage_date"
