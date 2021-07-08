@@ -1,6 +1,6 @@
 connection: "lookerdata"
 include: "*.view.lkml"
-
+# dumb comment
 datagroup: uli_datagroup {
   sql_trigger: SELECT max(partition_date) FROM `hale-sequence-317521.ds1.uli` ;;
   max_cache_age: "24 hours"
